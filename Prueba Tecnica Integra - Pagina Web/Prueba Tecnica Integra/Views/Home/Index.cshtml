@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Portal de Proveedores";
+}
+<main class="main-content">
+    <h2 class="page-title">Bienvenido al Portal de Proveedores</h2>
+    <div class="card-grid">
+        <partial name="_MenuCard" model='new MenuCardModel {
+                Title = "Gestión de Proveedores",
+                Description = "Administre la información de los proveedores",
+                Icon = "fa-solid fa-boxes-stacked",
+                LinkText = "Ir a Gestión de Proveedores",
+                LinkHref = Url.Action("Index", "SupplierManagement")
+            }' />
+
+        <partial name="_MenuCard" model='new MenuCardModel {
+                Title = "Gestión de Artículos",
+                Description = "Administre el catálogo de artículos",
+                Icon = "fa-solid fa-cart-shopping",
+                LinkText = "Ir a Gestión de Artículos",
+                LinkHref = Url.Action("Index", "ArticleManagement")
+            }' />
+
+        <partial name="_MenuCard" model='new MenuCardModel {
+                Title = "Reportes",
+                Description = "Genere informes y estadísticas",
+                Icon = "fa-solid fa-file-waveform",
+                LinkText = "Ir a Reportes",
+                LinkHref = Url.Action("Index", "Reports")
+            }' />
+
+        <partial name="_MenuCard" model='new MenuCardModel {
+                Title = "Configuración",
+                Description = "Ajuste las preferencias del sistema",
+                Icon = "fa-solid fa-screwdriver-wrench",
+                LinkText = "Ir a Configuración",
+                LinkHref = Url.Action("Index", "Settings")
+            }' />
+    </div>
+</main>

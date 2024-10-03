@@ -1,0 +1,163 @@
+:root {
+  /* Colores Primarios */
+  --primary-pink: #CC3366;
+  --primary-blue: #282E6A;
+  --primary-gray: #69727D;
+  --primary-light-blue: #0771B9;
+
+  /* Colores Secundarios */
+  --secondary-light-gray: #E1E8ED;
+  --secondary-yellow: #EFB71E;
+  --secondary-orange: #E98925;
+  --secondary-light-orange: #F68A38;
+
+  /* Colores Neutros */
+  --neutral-black: #000000;
+  --neutral-dark-gray: #282828;
+  --neutral-charcoal: #333333;
+  --neutral-medium-gray: #7A7A7A;
+  --neutral-light-gray: #ADADAD;
+  --neutral-white: #FFFFFF;
+
+  /* Adicionales */
+  --additional-dark-gray: #282828;
+
+  /* Imagenes url's*/
+  --logo-image: url('https://integrabcg.com/sap/wp-content/uploads/2021/01/IntegraBCG-SAPGP-Blanco-1024x213.png');
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+.navbar {
+  background-color: var(--primary-blue);
+  padding: 0.5rem 1rem;
+  height: 70px;
+}
+
+.navbar-brand {
+  padding: 0;
+  margin-right: 1rem;
+}
+
+.navbar-logo {
+  max-height: 50px;
+  width: auto;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+body {
+  background-color: var(--neutral-light-gray);
+  margin-bottom: 60px;
+}
+
+.logo-img {
+  content: var(--logo-image);
+  max-width: 100%;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem 0;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--secondary-light-gray);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1rem;
+}
+
+.card-title {
+  color: var(--secondary-orange);
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  color: #6c757d;
+  font-size: x-small;
+}
+
+.card-content {
+  height: -webkit-fill-available;
+  padding: 1rem;
+}
+
+.card-icon {
+  color: var(--secondary-orange);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.card-footer {
+  padding: 1rem;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: var(--primary-light-blue);
+  color: white;
+}
+
+.footer-main {
+  background-color: var(--primary-blue);
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}

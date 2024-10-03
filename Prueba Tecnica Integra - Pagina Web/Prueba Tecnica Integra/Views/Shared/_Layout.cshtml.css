@@ -1,0 +1,72 @@
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+:root {
+    /* Colores Primarios */
+    --primary-pink: #CC3366;
+    --primary-blue: #282E6A;
+    --primary-gray: #69727D;
+    --primary-light-blue: #0771B9;
+    /* Colores Secundarios */
+    --secondary-light-gray: #E1E8ED;
+    --secondary-yellow: #EFB71E;
+    --secondary-orange: #E98925;
+    --secondary-light-orange: #F68A38;
+    /* Colores Neutros */
+    --neutral-black: #000000;
+    --neutral-dark-gray: #282828;
+    --neutral-charcoal: #333333;
+    --neutral-medium-gray: #7A7A7A;
+    --neutral-light-gray: #ADADAD;
+    --neutral-white: #FFFFFF;
+    /* Adicionales */
+    --additional-dark-gray: #282828;
+    /* Imagenes url's*/
+    --logo-image: url('https://integrabcg.com/sap/wp-content/uploads/2021/01/IntegraBCG-SAPGP-Blanco-1024x213.png');
+}
+
+a.navbar-brand {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: #0077cc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer-main {
+  background-color: var(--secondary-light-gray);
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}

@@ -1,0 +1,17 @@
+﻿@{
+}
+@model MenuCardModel
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">@Model.Title</h3>
+        <p class="card-description">@Model.Description</p>
+    </div>
+    <div class="card-content">
+        <i class="@Model.Icon card-icon"></i>
+        <p>@Model.Description</p>
+    </div>
+    <div class="card-footer">
+        <a href="@Model.LinkHref" class="btn btn-primary">@Model.LinkText</a>
+    </div>
+</div>

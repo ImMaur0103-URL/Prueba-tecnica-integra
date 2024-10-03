@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Prueba_Tecnica_Integra.Models.T_PROVEEDOR>
+
+@{
+    ViewData["Title"] = "Gestión de Proveedores";
+}
+
+<div class="container">
+    <h1>Gestión de Proveedores</h1>
+    <button id="addSupplierBtn" class="btn">Agregar Proveedor</button>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre o NIT...">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>NIT</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Grupo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="supplierTableBody">
+            @foreach (var supplier in Model)
+            {
+                <tr>
+                    <td>@supplier.Nombre</td>
+                    <td>@supplier.NIT</td>
+                    <td>@supplier.Telefono</td>
+                    <td>@supplier.Correo</td>
+                    <td>@supplier.GrupoProveedor?.Descripcion</td>
+                    <td>
+                        <button class="btn edit-btn" data-id="@supplier.ID">Editar</button>
+                        <button class="btn delete-btn" data-id="@supplier.ID">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#searchInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $("#supplierTableBody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}
