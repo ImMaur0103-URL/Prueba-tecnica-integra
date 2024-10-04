@@ -1,25 +1,51 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using Prueba_Tecnica_Integra.Data;
 using Prueba_Tecnica_Integra.Models;
+using System.Data;
+using System.Text;
 
 namespace Prueba_Tecnica_Integra.Controllers
 {
     public class SupplierManagement : Controller
     {
-        private readonly PruebaTecnicaIntegraContext _context;
+        private readonly DatabaseConnection _dbConnection;
 
-        public SupplierManagement(PruebaTecnicaIntegraContext context)
+        public SupplierManagement(IConfiguration configuration)
         {
-            _context = context;
+            _dbConnection = new DatabaseConnection(configuration);
         }
 
         public async Task<IActionResult> Index()
         {
-            var proveedores = await _context.T_PROVEEDOR
-                .Include(p => p.GrupoProveedor)
-                .ToListAsync();
+            List<T_PROVEEDOR> proveedores = new List<T_PROVEEDOR>();
+
+            using (SqlConnection connection = _dbConnection.GetConnection())
+            {
+                connection.Open();
+                string sql = "SELECT * FROM T_PROVEEDOR";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            proveedores.Add(new T_PROVEEDOR
+                            {
+                                ID = reader.GetInt32(0),
+                                Nombre = reader.GetString(1),
+                                Telefono = reader.IsDBNull(2) ? null : reader.GetString(2),
+                                Correo = reader.IsDBNull(3) ? null : reader.GetString(3),
+                                NIT = reader.GetString(4),
+                                Direccion = reader.GetString(5),
+                                IDGrupoProv = (int)(reader.IsDBNull(6) ? (int?)null : reader.GetInt32(6))
+                            });
+                        }
+                    }
+                }
+            }
+
             return View(proveedores);
         }
 

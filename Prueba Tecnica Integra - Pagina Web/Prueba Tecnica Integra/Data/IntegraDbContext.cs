@@ -1,41 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Prueba_Tecnica_Integra.Models;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace Prueba_Tecnica_Integra.Data
 {
-    public class PruebaTecnicaIntegraContext : DbContext
+    public class DatabaseConnection
     {
-        public PruebaTecnicaIntegraContext(DbContextOptions<PruebaTecnicaIntegraContext> options)
-            : base(options) { }
+        private readonly IConfiguration _configuration;
+        private readonly string _connectionString;
 
-
-        public DbSet<T_PROVEEDOR> T_PROVEEDOR { get; set; }
-        public DbSet<T_GRUPO_PROV> T_GRUPO_PROV { get; set; }
-        public DbSet<T_ARTÍCULO> T_ARTÍCULO { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DatabaseConnection(IConfiguration configuration)
         {
-            modelBuilder.Entity<T_PROVEEDOR>().ToTable("T_PROVEEDOR");
-            modelBuilder.Entity<T_GRUPO_PROV>().ToTable("T_GRUPO_PROV");
-            modelBuilder.Entity<T_ARTÍCULO>().ToTable("T_ARTÍCULO");
+            _configuration = configuration;
+            _connectionString = _configuration.GetConnectionString("DB_2");
+        }
 
-            modelBuilder.Entity<T_ARTÍCULO>()
-                .Property(a => a.Precio)
-                .HasPrecision(18, 2);
-
-            modelBuilder.Entity<T_ARTÍCULO>()
-                .Property(a => a.Stock)
-                .HasPrecision(18, 2);
-
-            modelBuilder.Entity<T_PROVEEDOR>()
-                .HasOne(p => p.GrupoProveedor)
-                .WithMany(g => g.Proveedores)
-                .HasForeignKey(p => p.IDGrupoProv);
-
-            modelBuilder.Entity<T_ARTÍCULO>()
-                .HasOne(a => a.Proveedor)
-                .WithMany(p => p.Articulos)
-                .HasForeignKey(a => a.IDProveedor);
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(_connectionString);
         }
     }
 }
